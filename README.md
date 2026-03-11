@@ -1,13 +1,31 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/M8LRQi0F)
-# Assignment-01-Arrays
-**Placement Training Assignment 01 – Arrays**
+class Assignment1 {
 
-1. Find the next 15 leap years from the year passed as parameter to the findLeapYears() method. Include the year passed as parameter if it is a leap year. Implement the logic inside findLeapYears() method and return an int array containing all the leap years. Test the functionalities using the main method of the Tester class.
+    public int[] findLeapYears(int year) {
+        int[] leapYears = new int[15];
+        int count = 0;
 
-[Hint: Any year which is divisible by 4 and not by 100 are leap years. Otherwise, any year which is divisible by 400 is also a leap year]
+        while (count < 15) {
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                leapYears[count] = year;
+                count++;
+            }
+            year++;
+        }
 
-**Sample Input:**
-2000
+        return leapYears;
+    }
+}
 
-**Expected Output:**
-2000 2004 2008 2012 2016 2020 2024 2028 2032 2036 2040 2044 2048 2052 2056
+class Tester {
+    public static void main(String[] args) {
+
+        Assignment1 obj = new Assignment1();
+        int startYear = 2000;
+
+        int[] result = obj.findLeapYears(startYear);
+
+        for (int year : result) {
+            System.out.print(year + " ");
+        }
+    }
+}
